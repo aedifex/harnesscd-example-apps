@@ -1,20 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook-ui
+  name: harness-demo
 spec:
   replicas: 3
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: guestbook-ui
+      app: harness-demo
   template:
     metadata:
       labels:
-        app: guestbook-ui
+        app: harness-demo
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
-        name: guestbook-ui
+      - image: 24987503353.dkr.ecr.us-east-2.amazonaws.com/jfrog:local
+        name: harness-demo
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: harness
